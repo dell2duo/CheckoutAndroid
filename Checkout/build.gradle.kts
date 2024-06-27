@@ -22,7 +22,6 @@ android {
     }
     buildTypes {
         release {
-            isJniDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -44,30 +43,23 @@ android {
 
 publishing {
     publications {
-        create<MavenPublication>("release") { // You can choose a different name
-                groupId = "com.ingresse" // Replace with your domain or organization
-                artifactId = "checkout" // Replace with your library's name
-                version = "0.0.1-alpha.1" // Replace with your library's version
-
-                afterEvaluate {
-                    from(components["release"]) // Publish the release build variant
-                }
-            }
+        create<MavenPublication>("maven") { // You can choose a different name
+            groupId = "com.github.dell2duo" // Replace with your domain or organization
+            artifactId = "checkout" // Replace with your library's name
+            version = "0.0.1-alpha.4" // Replace with your library's version
+            artifact("build/outputs/aar/Checkout-release.aar")
+        }
     }
-//    repositories {
-//        maven {
-//            url = uri("file:///${project.buildDir}/repo") // Example for local repository
-//        }
-//    }
 }
 
 
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.gradle)
+    implementation(libs.kotlin.gradle.plugin)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
