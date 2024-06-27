@@ -46,7 +46,7 @@ publishing {
         create<MavenPublication>("maven") { // You can choose a different name
             groupId = "com.github.dell2duo" // Replace with your domain or organization
             artifactId = "checkout" // Replace with your library's name
-            version = "0.0.1-alpha.4" // Replace with your library's version
+            version = "0.0.1-alpha.5" // Replace with your library's version
             artifact("build/outputs/aar/Checkout-release.aar")
         }
     }
